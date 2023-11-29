@@ -6,7 +6,6 @@ fetch('http://localhost:5678/api/works/')
     })
     .then(travauxData => {
         const travaux = travauxData;
-
         function genererTraveaux(travaux) {
             for (let i = 0; i < travaux.length; i++) {
                 const works = travaux[i];

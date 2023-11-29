@@ -15,7 +15,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, button{
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -125,6 +125,29 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+.category {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 50px;
+	font-family: syne;
+}
+.category button {
+	border-radius: 60px;
+	border: 1px solid rgba(29, 97, 84, 1);
+	color: #1D6154;
+	background-color: white;
+	font-size: 16px;
+	height: 37px;
+	padding: 5px 19px;
+	white-space: nowrap;
+}
+
+.category button:hover {
+	color: white;
+	background-color: #1D6154;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -132,6 +155,7 @@ li:hover {
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
+
 
 .gallery img {
 	width: 100%;
@@ -148,14 +172,14 @@ margin: auto;
 #contact h2{
 	margin-bottom: 20px;
 }
-#contact form {
+#contact form, form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input {
+#contact input,input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -186,3 +210,18 @@ footer nav ul {
 	margin: 2em
 }
 
+.login {
+	text-align: center;
+}
+
+.form-login {
+	margin: auto;
+	width: 400px;
+}
+
+
+form span {
+	text-decoration: underline;
+	margin: auto;
+	margin-top: 50px;
+}

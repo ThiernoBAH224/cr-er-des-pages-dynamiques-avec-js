@@ -1,30 +1,17 @@
+import { genererTraveaux } from "./test.js";
 
-// Récupération des des projets depuis l'API
+ function isConnect() {
+    return localStorage.getItem('token') !== null;
+}
+
+
+//Récupération des des projets depuis l'API
 fetch('http://localhost:5678/api/works/')
     .then(response => {
         return response.json();
     })
     .then(travauxData => {
         const travaux = travauxData;
-        function genererTraveaux(travaux) {
-            for (let i = 0; i < travaux.length; i++) {
-                const works = travaux[i];
-
-                // Récupération de l'élément du DOM qui accueillera les travaux
-                const sectionTravaux = document.querySelector(".gallery");
-
-                const figureWorks = document.createElement("figure");
-                const imageWorks = document.createElement("img");
-                imageWorks.src = works.imageUrl;
-                const legendeFigure = document.createElement("figcaption");
-                legendeFigure.innerText = works.title;
-
-                sectionTravaux.appendChild(figureWorks);
-                figureWorks.appendChild(imageWorks);
-                figureWorks.appendChild(legendeFigure);
-            }
-        }
-
         genererTraveaux(travaux);
 
         fetch('http://localhost:5678/api/categories/')
@@ -43,17 +30,14 @@ fetch('http://localhost:5678/api/works/')
                     const categoriesElement = document.createElement("button");
                     categoriesElement.innerText = category.name;
 
-                    // Ajouter un écouteur d'événement click à chaque bouton de catégorie
                     categoriesElement.addEventListener("click", () => {
-                        //console.log(`Bouton ${category.name} cliqué!`);
-                        // Filtrer les travaux en fonction de la catégorie sélectionnée
+                        //Filtrer les travaux en fonction de la catégorie sélectionnée
                         const travauxFiltres = travaux.filter(works => works.categoryId === category.id);
                         
-                        // Effacer les travaux actuels
+                        //Effacer les travaux actuels
                         const sectionTravaux = document.querySelector(".gallery");
                         sectionTravaux.innerHTML = "";
 
-                        // Générer les travaux filtrés
                         genererTraveaux(travauxFiltres);
                     });
 
@@ -69,11 +53,33 @@ fetch('http://localhost:5678/api/works/')
     });
 
 
+if (isConnect()) {
+    const btnLogin = document.getElementById("btn-login");
+btnLogin.innerHTML = "";
 
+let btnLogOut = "Logout";
+let btnDeconnexion = document.createElement("li");
+btnDeconnexion.textContent = btnLogOut;
 
+btnDeconnexion.classList.add("logout"); 
 
+let nav = document.querySelector("nav ul");
 
+let dernierLi = nav.querySelector("li:last-child");
 
+nav.insertBefore(btnDeconnexion, dernierLi);
+
+}
+
+const monBtnLogOut = document.querySelector(".logout")
+monBtnLogOut.addEventListener("click", () => {
+    localStorage.removeItem('token');
+
+    window.location.href = 'index.html'
+
+    //genererTraveaux(travaux)
+
+})
 
 
 

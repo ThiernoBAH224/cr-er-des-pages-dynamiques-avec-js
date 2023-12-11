@@ -4,6 +4,20 @@ import { genererTraveaux } from "./test.js";
     return localStorage.getItem('token') !== null;
 }
 
+function buttonLogout() {
+
+    let btnLogOut = "Logout";
+    let btnDeconnexion = document.createElement("li");
+    btnDeconnexion.textContent = btnLogOut;
+
+    btnDeconnexion.classList.add("logout"); 
+
+    let nav = document.querySelector("nav ul");
+
+    let dernierLi = nav.querySelector("li:last-child");
+
+    nav.insertBefore(btnDeconnexion, dernierLi);
+}
 
 //Récupération des des projets depuis l'API
 fetch('http://localhost:5678/api/works/')
@@ -24,6 +38,12 @@ fetch('http://localhost:5678/api/works/')
 
                 const divCategory = document.querySelector(".category");
 
+                const btnAllCategory = document.createElement("button")
+                btnAllCategory.classList.add("allCategory")
+                const btnContent = "Tous"
+                btnAllCategory.textContent = btnContent
+                divCategory.appendChild(btnAllCategory)
+
                 for (let i = 0; i < categories.length; i++) {
                     const category = categories[i];
 
@@ -43,7 +63,7 @@ fetch('http://localhost:5678/api/works/')
 
                     divCategory.appendChild(categoriesElement);
                 }
-                const allCatgory = document.getElementById("allCategory")
+                const allCatgory = document.querySelector(".allCategory")
                 allCatgory.addEventListener("click",() => {
                     const sectionTravaux = document.querySelector(".gallery");
                     sectionTravaux.innerHTML = "";
@@ -55,19 +75,10 @@ fetch('http://localhost:5678/api/works/')
 
 if (isConnect()) {
     const btnLogin = document.getElementById("btn-login");
-btnLogin.innerHTML = "";
+    btnLogin.innerHTML = "";
 
-let btnLogOut = "Logout";
-let btnDeconnexion = document.createElement("li");
-btnDeconnexion.textContent = btnLogOut;
+    buttonLogout()
 
-btnDeconnexion.classList.add("logout"); 
-
-let nav = document.querySelector("nav ul");
-
-let dernierLi = nav.querySelector("li:last-child");
-
-nav.insertBefore(btnDeconnexion, dernierLi);
 
 }
 
@@ -80,9 +91,3 @@ monBtnLogOut.addEventListener("click", () => {
     //genererTraveaux(travaux)
 
 })
-
-
-
-
-
-

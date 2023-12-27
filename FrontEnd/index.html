@@ -4,12 +4,18 @@
 	<meta charset="UTF-8">
 	<title>Sophie Bluel - Architecte d'intérieur</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+	integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+	crossorigin="anonymous"
+	referrerpolicy="no-referrer"/>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="works.js" defer></script>
+	<script type="module" src="main.js" defer></script>
 </head>
 <body>
 <header>
@@ -35,17 +41,65 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
+	<aside class="modal">
+		<div class="galery-modale">
+			<span class="close-modal">X</span>
+			<h3 class="title-modal">Galerie photo</h3>
+			<div class="galey-image-modal">
+				<div class="image-and-delete"></div>
+			</div>
+			<div class="border-and-btn">
+				<span class="border"></span>
+				<button class="btn-add-image">Ajouter une photo</button>
+			</div>
+		</div>
+	</aside>
+	<aside class="modal-add-image">
+		<div class="modal-deux">
+			<div class="icone-modal-deux">
+				<i class="fa-solid fa-arrow-left"></i>
+				<i class="fa-solid fa-xmark"></i>
+			</div>
+			<h3 class="title-modal-deux">Ajout photo</h3>
+				<div class="image-content">
+					<i class="fa-regular fa-image"></i>
+					<span class="ajouter-photo">+ Ajouter photo</span>
+					<span class="format-image">jpg, png : 4mo max</span>
+				</div>
+			<div class="form-add-image">
+				<div class="champ-titre">
+					<label for="text">Titre </label>
+					<input type="text" id="Titre" name="Titre">
+					<br>
+				</div>
+				<div class="champ-category">
+					<label for="categorie">Catégorie</label>
+					<select id="categorie" name="categorie" required>
+						<option value="" disabled selected></option>
+						<option value="categorie1">Objets</option>
+						<option value="categorie2">Appartements</option>
+						<option value="categorie3">Hotels & restaurants</option>
+						<!-- Ajoutez d'autres options selon vos besoins -->
+					</select>
+					<br>
+				</div>
+			</div>
+		</div>
+	</aside>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="modify">
+			<h2>Mes Projets</h2>
+		</div>
 		<div class="category">
-			<!-- <button id="allCategory">Tous</button> -->
 		</div>
 		<div class="gallery">
 		</div>
 	</section>
 	<section id="contact">
-		<h2>Contact</h2>
-		<p>Vous avez un projet ? Discutons-en !</p>
+		<div class="modify">
+			<h2>Contact</h2>
+		</div>
+		<p>Vous avez un projet ? Discutons-en !</p> 
 		<form action="#" method="post">
 			<label for="name">Nom</label>
 			<input type="text" name="name" id="name">

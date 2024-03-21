@@ -72,4 +72,3 @@ export function btnModifier() {
     document.querySelector('.modify').appendChild(boutonModifier);
 }
 
-

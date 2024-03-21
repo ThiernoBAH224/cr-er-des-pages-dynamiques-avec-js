@@ -1,14 +1,36 @@
 function openModale() {
     const modif = document.querySelector(".btn-modifier")
     modif.addEventListener("click", () => {
-        document.querySelector(".modal").style.visibility = "visible"
+        document.querySelector(".modal").style.display = "flex"
     })
 }
+
+function openModaleAddImg() {
+    const modif = document.querySelector(".btn-add-image")
+    modif.addEventListener("click", () => {
+        document.querySelector(".modal-add-image ").style.visibility = "visible"
+    })
+}
+
 
 function closeModal() {
     const close = document.querySelector(".close-modal")
     close.addEventListener("click", () => {
-        document.querySelector(".modal").style.visibility = "hidden"
+        document.querySelector(".modal").style.display = "none"
+    })
+}
+
+function closeModalAddImg() {
+    const close = document.querySelector(".close-modal-add-img")
+    close.addEventListener("click", () => {
+        document.querySelector(".modal-add-image").style.visibility = "hidden"
+    })
+}
+
+function returnModalOne() {
+    const close = document.querySelector(".retur-modal-one")
+    close.addEventListener("click", () => {
+        document.querySelector(".modal-add-image").style.visibility = "hidden"
     })
 }
 
@@ -28,5 +50,8 @@ function imageModal(works) {
 export function initModal(works) {
     openModale()
     closeModal()
+    openModaleAddImg()
+    closeModalAddImg()
+    returnModalOne()
     imageModal(works)
 }

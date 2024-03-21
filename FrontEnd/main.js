@@ -2,7 +2,7 @@ import { displayWorks, displayCategory, btnModifier, buttonLogout  } from "./dis
 
 import { fetchWork, fetchCategory } from "./api.js";
 
-import { filterCategory } from "./display.js";
+//import { filterCategory } from "./display.js";
 
 import { initModal } from "./modale.js";
 function isConnect() {
@@ -22,6 +22,7 @@ if (isConnect()) {
     buttonLogout()
     btnModifier()
     initModal(works)
+    document.querySelector('.mode-edition').style.display = "flex"
 } else {
     displayCategory(category)
 }

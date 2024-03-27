@@ -65,10 +65,16 @@ export function filterCategory(works, category) {
     });
 }
 
+
 export function btnModifier() {
+    const icone = document.createElement('i');
+    icone.classList.add('fa', 'fa-regular', 'fa-pen-to-square');
     const boutonModifier = document.createElement('button');
     boutonModifier.textContent = 'modifier';
     boutonModifier.classList.add('btn-modifier');
+    boutonModifier.appendChild(icone); 
     document.querySelector('.modify').appendChild(boutonModifier);
 }
+
+
 

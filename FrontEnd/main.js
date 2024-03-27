@@ -13,16 +13,21 @@ function isConnect() {
 const category = await fetchCategory()
 const works = await fetchWork()
 
+//console.log(works)
+
+
 // const imageWork = works.map(work => work.imageUrl)
 
 
 displayWorks(works)
 
+
 if (isConnect()) {
     buttonLogout()
     btnModifier()
-    initModal(works)
+    initModal(works, category)
     document.querySelector('.mode-edition').style.display = "flex"
+    
 } else {
     displayCategory(category)
 }

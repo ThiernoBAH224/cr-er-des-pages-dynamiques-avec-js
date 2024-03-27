@@ -141,11 +141,15 @@ li:hover {
 .modify {
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	gap: 40px;
+	gap: 30px;
 }
 .btn-modifier {
 	background-color: white;
+	display: flex;
+	gap: 10px;
+}
+.btn-modifier .fa {
+	order: -1;
 }
 .category {
 	display: flex;
@@ -277,7 +281,7 @@ form span {
 
 .title-modal {
 	text-align: center;
-	margin-top: 50px;
+	margin-top: 20px;
 	font-size: 26px;
 }
 
@@ -295,9 +299,27 @@ form span {
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	margin-top: 20px;
+	margin-top: 30px;
 	margin-left: 70px;
 	margin-right: 70px;
+}
+.container-img-icone {
+	position: relative;
+}
+
+.container-img-icone .fa-solid {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background-color: black;
+	color: #fff;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+
 }
 
 .image-and-delete img {
@@ -307,10 +329,7 @@ form span {
 }
 
 .fa-trash-can {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	display: flex;
 
 }
 

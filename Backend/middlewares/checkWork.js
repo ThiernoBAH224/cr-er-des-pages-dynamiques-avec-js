@@ -5,7 +5,8 @@ module.exports = (req, res, next) => {
 		const categoryId = parseInt(req.body.category) ?? undefined;
 		const userId = req.auth.userId ?? undefined;
 		const imageUrl = `${req.protocol}://${host}/images/${req.file.filename}` ?? undefined;
-	console.log(title,categoryId,userId,imageUrl)
+	console.log(title,categoryId,userId,"image = ",imageUrl)
+	console.log("req.file = ",req.file.filename)
 		if(title !== undefined &&
 			title.length > 0 &&
 			categoryId !== undefined &&

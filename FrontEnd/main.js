@@ -5,6 +5,7 @@ import { fetchWork, fetchCategory } from "./api.js";
 //import { filterCategory } from "./display.js";
 
 import { initModal } from "./modale.js";
+
 function isConnect() {
     return localStorage.getItem('token') !== null;
 }
@@ -20,6 +21,7 @@ const works = await fetchWork()
 
 
 displayWorks(works)
+//filterCategory(works)
 
 
 if (isConnect()) {

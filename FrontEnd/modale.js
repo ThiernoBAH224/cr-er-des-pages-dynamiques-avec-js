@@ -37,19 +37,18 @@ function imageModal(works) {
     for(let i = 0; i < works.length; i++) {
         const currentWork = works[i]; 
         const sectionTravaux = document.querySelector(".image-and-delete");
-        const container = document.createElement("div"); // Conteneur pour l'image et l'icône
+        const container = document.createElement("div"); 
         const imageWorks = document.createElement("img");
         const deleteIcon = document.createElement("i");
         container.classList.add("container-img-icone");
-        // Ajout de l'icône trash-can avec l'id de l'oeuvre
         deleteIcon.className = "fa-solid fa-trash-can";
-        deleteIcon.dataset.workId = currentWork.id; // Utilisation de dataset pour stocker l'id
+        deleteIcon.dataset.workId = currentWork.id; 
         
         imageWorks.src = currentWork.imageUrl;
         
-        container.appendChild(imageWorks); // Ajout de l'image au conteneur
-        container.appendChild(deleteIcon); // Ajout de l'icône au conteneur
-        sectionTravaux.appendChild(container); // Ajout du conteneur à la section principale
+        container.appendChild(imageWorks); 
+        container.appendChild(deleteIcon); 
+        sectionTravaux.appendChild(container); 
     }
 }
 
@@ -65,30 +64,21 @@ function generateOptions(categories) {
 function addWorks() {
     document.getElementById("formulaire-image").addEventListener("submit", async (event) => {
         event.preventDefault();
-
         const form = document.getElementById("formulaire-image");
         const formData = new FormData(form);
-        const formDataObject = Object.fromEntries(formData);
-
-        console.log(formDataObject)
-
         try {
             const response = await fetch('http://localhost:5678/api/works/', {
                 method: 'POST',
                 headers: {
-                    authorization : "Bearer "+localStorage.getItem("token"),
-                    'Content-Type': 'application/json'
+                    authorization: "Bearer " + localStorage.getItem("token"),
                 },
-                body: formData//JSON.stringify(formDataObject)
+                body: formData 
             });
-
             if (!response.ok) {
                 throw new Error('Une erreur s\'est produite lors de l\'envoi des données.');
             }
-
             const responseData = await response.json();
-            console.log(responseData); 
-
+            //console.log(responseData);
         } catch (error) {
             console.error('Erreur:', error);
         }
@@ -101,23 +91,19 @@ function deleteWork() {
         const trash = trashList[i];
         trash.addEventListener('click', async () => {
             const workId = trash.getAttribute('data-work-id');
-            console.log(workId)
-
             try {
-                const response = await fetch('http://localhost:5678/api/works/{id}', {
-                    method: 'POST',
+                const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+                    method: 'DELETE',
                     headers: {
+                        'Authorization': "Bearer " + localStorage.getItem("token"),
                         'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(workId)
+                    }
                 });
-
                 if (!response.ok) {
                     throw new Error('La suppression a échoué');
+                } else {
+                    trash.parentNode.remove(); 
                 }
-
-                const responseDelete = await response.json();
-                console.log(responseDelete);
             } catch (error) {
                 console.error('Erreur de suppression:', error.message);
             }
@@ -125,6 +111,9 @@ function deleteWork() {
     }
 }
 
+
+
+//http://192.168.1.14:3000/
 
 
 

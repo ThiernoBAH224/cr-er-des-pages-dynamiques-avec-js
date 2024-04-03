@@ -56,14 +56,6 @@ export function buttonLogout() {
 }
 
 
-export function filterCategory(works, category) {
-    const categoriesElement = document.querySelector(".button");
-    categoriesElement.innerText = category.name;
-    categoriesElement.addEventListener("click", () => {
-        const categoryFilter = works.filter(work => work.categoryId === category.id);
-        displayWorks(categoryFilter);
-    });
-}
 
 
 export function btnModifier() {

@@ -15,30 +15,35 @@ export function displayWorks(travaux) {
     }
 }
 
-export function displayCategory(category) {
+export function displayCategory(category, works) {
     const divCategory = document.querySelector(".category");
     const btnAllCategory = document.createElement("button");
     btnAllCategory.classList.add("allCategory");
     const btnContent = "Tous";
     btnAllCategory.textContent = btnContent;
     divCategory.appendChild(btnAllCategory);
-
     for (let i = 0; i < category.length; i++) {
         const categories = category[i];
         const categoriesElement = document.createElement("button");
         categoriesElement.innerText = categories.name;
-
+        const work = works
         categoriesElement.addEventListener("click", () => {
-            const filterCategory = categories.filter(obj => obj.categoryId === category.id)
-            console.log(filterCategory)
+            const filterCategory = work.filter(works => works.categoryId === categories.id)
+            const sectionTravaux = document.querySelector(".gallery");
+            sectionTravaux.innerHTML = "";
+            displayWorks(filterCategory)
         })
-
-        
-        
+        const btnAllCategory = document.querySelector(".allCategory")
+        btnAllCategory.addEventListener("click", () => {
+            const sectionTravaux = document.querySelector(".gallery");
+            sectionTravaux.innerHTML = "";
+            displayWorks(work)
+        })
         divCategory.appendChild(categoriesElement);
-        
     }
 }
+
+
 
 export function buttonLogout() {
     const btnLogin = document.getElementById("btn-login");

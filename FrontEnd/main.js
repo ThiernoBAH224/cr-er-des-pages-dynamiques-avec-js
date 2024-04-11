@@ -50,7 +50,7 @@ if (isConnect()) {
     document.querySelector('.mode-edition').style.display = "flex"
     
 } else {
-    displayCategory(category)
+    displayCategory(category, works)
 }
 
 

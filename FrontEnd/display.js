@@ -27,6 +27,13 @@ export function displayCategory(category) {
         const categories = category[i];
         const categoriesElement = document.createElement("button");
         categoriesElement.innerText = categories.name;
+
+        categoriesElement.addEventListener("click", () => {
+            const filterCategory = categories.filter(obj => obj.categoryId === category.id)
+            console.log(filterCategory)
+        })
+
+        
         
         divCategory.appendChild(categoriesElement);
         
@@ -36,24 +43,23 @@ export function displayCategory(category) {
 export function buttonLogout() {
     const btnLogin = document.getElementById("btn-login");
     btnLogin.innerHTML = "";
-    let btnLogOut = "Logout";
-    let btnDeconnexion = document.createElement("li");
+    
+    const btnLogOut = "Logout";
+    const btnDeconnexion = document.createElement("li");
     btnDeconnexion.textContent = btnLogOut;
+    btnDeconnexion.classList.add("logout");
 
-    btnDeconnexion.classList.add("logout"); 
+    const nav = document.querySelector("ul");
+    const logoLi = nav.querySelector("img").parentElement;
 
-    let nav = document.querySelector("nav ul");
+    nav.insertBefore(btnDeconnexion, logoLi);
 
-    let dernierLi = nav.querySelector("li:last-child");
-
-    nav.insertBefore(btnDeconnexion, dernierLi);
-
-    const monBtnLogOut = document.querySelector(".logout")
-    monBtnLogOut.addEventListener("click", () => {
-        localStorage.removeItem("token")
-        window.location.href = "index.html"
-    })
+    btnDeconnexion.addEventListener("click", () => {
+        localStorage.removeItem("token");
+        window.location.href = "index.html";
+    });
 }
+
 
 
 

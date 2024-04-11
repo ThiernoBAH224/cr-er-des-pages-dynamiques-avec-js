@@ -14,7 +14,7 @@ function isConnect() {
 const category = await fetchCategory()
 const works = await fetchWork()
 
-//console.log(works)
+//console.log(category)
 
 
 // const imageWork = works.map(work => work.imageUrl)
@@ -22,6 +22,25 @@ const works = await fetchWork()
 
 displayWorks(works)
 //filterCategory(works)
+
+// const categoriesElements = document.querySelectorAll(".category button");
+// console.log(categoriesElements)
+
+// for (let i = 0; i < categoriesElements.length; i++) {
+//     const category = categoriesElements[i];
+//     console.log(category); 
+    
+//     category.addEventListener("click", async () => {
+//         const travauxFiltres = works.filter(work => work.categoryId === category.id);
+//         console.log(travauxFiltres)
+//         const sectionTravaux = document.querySelector(".gallery");
+//         sectionTravaux.innerHTML = "";
+//         displayWorks(travauxFiltres);
+//     });
+// }
+
+
+
 
 
 if (isConnect()) {

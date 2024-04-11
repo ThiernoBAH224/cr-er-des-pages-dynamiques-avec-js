@@ -62,10 +62,55 @@ function generateOptions(categories) {
 }
 
 function addWorks() {
-    document.getElementById("formulaire-image").addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const form = document.getElementById("formulaire-image");
-        const formData = new FormData(form);
+    const addPhoto = document.querySelector(".add-photo");
+    const form = document.getElementById("formulaire-image");
+    const submitButton = form.querySelector("button[type='submit']");
+    const titleInput = form.querySelector("#Titre");
+    const categorySelect = form.querySelector("#categorie");
+    const imageInput = form.querySelector("#ajouter-photo");
+    const previewImage = document.getElementById("preview-image");
+
+    // Fonction pour prévisualiser l'image sélectionnée
+    function previewSelectedImage() {
+        const file = imageInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                previewImage.src = event.target.result;
+                previewImage.style.display = "block";
+                addPhoto.style.display = "none";
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            previewImage.src = "#";
+            previewImage.style.display = "none";
+        }
+    }
+    imageInput.addEventListener("change", function() {
+        previewSelectedImage();
+        checkFormFields(); 
+    });
+    function checkFormFields() {
+        const titleValue = titleInput.value.trim();
+        const categoryValue = categorySelect.value;
+        const imageValue = imageInput.files.length > 0;
+        console.log(imageValue)
+    
+        if (titleValue !== '' && categoryValue !== '' && imageValue) {
+            submitButton.style.backgroundColor = "rgba(29, 97, 84, 1)"; 
+            submitButton.disabled = false; 
+        } else {
+            submitButton.style.backgroundColor = "rgba(167, 167, 167, 1)";
+            submitButton.disabled = true; 
+        }
+    }
+    previewSelectedImage();
+    checkFormFields();
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault(); 
+        const formData = new FormData(form); 
         try {
             const response = await fetch('http://localhost:5678/api/works/', {
                 method: 'POST',
@@ -77,13 +122,12 @@ function addWorks() {
             if (!response.ok) {
                 throw new Error('Une erreur s\'est produite lors de l\'envoi des données.');
             }
-            const responseData = await response.json();
-            //console.log(responseData);
         } catch (error) {
             console.error('Erreur:', error);
         }
     });
 }
+
 
 function deleteWork() {
     const trashList = document.querySelectorAll('.fa-trash-can');

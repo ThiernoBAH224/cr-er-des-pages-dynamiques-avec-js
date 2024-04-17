@@ -37,11 +37,9 @@ a {
     text-decoration: none;
 }
 
-
 a:hover {
     color: inherit;
 }
-
 
 ol, ul {
 	list-style: none;
@@ -137,10 +135,7 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
-/* #portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
-} */
+
 
 .modify {
 	display: flex;
@@ -186,7 +181,6 @@ li:hover {
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
-
 
 .gallery img {
 	width: 100%;
@@ -249,16 +243,10 @@ footer nav ul {
 	margin: auto;
 	width: 400px;
 }
-
-
-
 /* css pour la modale galerie */
-
 .modal {
 	display: none;
-	/* visibility: hidden; */
 	position: fixed;
-	/* display: flex; */
 	align-items: center;
 	justify-content: center;
 	top: 0;
@@ -267,7 +255,6 @@ footer nav ul {
 	height: 100%;
 	background: rgba(0, 0, 0, 0.4);
 	z-index: 1000;
-
 }
 
 .galery-modale, .modal-deux  {
@@ -276,9 +263,7 @@ footer nav ul {
 	height: 630px;
 	border-radius: 10px;
 	z-index: 1000;
-	overflow: scroll;
 }
-
 
 .title-modal {
 	text-align: center;
@@ -463,5 +448,3 @@ footer nav ul {
 	width: 100%;
 	height: 59px;
 }
-
-/* l'icone de l'img c'est avce font-zize */
